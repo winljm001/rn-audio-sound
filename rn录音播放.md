@@ -10,6 +10,8 @@ npx react-native init AudioApp --template react-native-template-typescript
 
 ```
 yarn add react-native-audio
+
+yarn add @types/react-native-audio -D
 ```
 
 ### 配置使用的权限
@@ -25,4 +27,14 @@ yarn add react-native-audio
 ```xml
 <key>NSMicrophoneUsageDescription</key>
 <string>This sample uses the microphone to record your speech and convert it to text.</string>
+```
+
+### ios 有个警告
+
+在 `node_modules/react-native-audio/ios/AudioRecorderManager.m` 65 行添加如下
+
+```
++ (BOOL) requiresMainQueueSetup {
+  return YES;
+}
 ```
